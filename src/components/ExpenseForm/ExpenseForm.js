@@ -34,18 +34,13 @@ const ExpenseForm = ({ newEntryHandle }) => {
 			</div>
 			<div style={styles.container}>
 				<label style={styles.label}>Name</label>
-				<input style={styles.input} type='text' placeholder='name' {...register('name', { required: true })} />
+				<input style={styles.input} type='text' {...register('name', { required: true })} />
 				{errors.name && <span style={styles.requiredError}>This field is required</span>}
 			</div>
 
 			<div style={styles.container}>
 				<label style={styles.label}>Amount</label>
-				<input
-					style={styles.input}
-					type='number'
-					placeholder='amount'
-					{...register('amount', { required: true, min: 0 })}
-				/>
+				<input style={styles.input} type='number' {...register('amount', { required: true, min: 0 })} />
 				{errors.number && <span style={styles.requiredError}>This field is required</span>}
 			</div>
 			<div style={styles.container}>

@@ -1,19 +1,44 @@
 import Entry from './Entry';
 
+const expenseColor = '#e6300b';
+const incomeColor = '#47a025';
+
 const styles = {
 	container: {
-		display: 'flex'
+		display: 'flex',
+		gap: 10,
+		borderRadius: 6,
+		padding: 10
+	},
+	infoText: {
+		textAlign: 'center',
+		fontWeight: 700
 	},
 	list: {
-		width: '50%',
 		maxHeight: 350,
-		overflowY: 'auto'
+		overflowY: 'auto',
+		display: 'flex',
+		flexDirection: 'column',
+		gap: 10
 	},
-	incomeEntry: {
-		border: '1px solid green'
+	listContainer: {
+		width: '50%'
 	},
-	expenseEntry: {
-		border: '1px solid red'
+
+	header: {
+		textAlign: 'center'
+	},
+	expenseHeader: {
+		textAlign: 'center',
+		color: expenseColor,
+		fontSize: 18,
+		fontWeight: 700
+	},
+	incomeHeader: {
+		textAlign: 'center',
+		color: incomeColor,
+		fontSize: 18,
+		fontWeight: 700
 	}
 };
 const Expense = ({ data, removeEntry }) => {
@@ -23,42 +48,48 @@ const Expense = ({ data, removeEntry }) => {
 	const expenseData = data.filter((el) => el.type === 'expense');
 	const incomeData = data.filter((el) => el.type === 'income');
 
-	const noDataComponent = <p>No entries to show</p>;
-	const noExpensesComponent = <p>No expenses</p>;
-	const noIncomesComponent = <p>No incomes</p>;
+	const noDataComponent = <p style={styles.infoText}>No entries to show</p>;
+	const noExpensesComponent = <p style={styles.infoText}>No expenses</p>;
+	const noIncomesComponent = <p style={styles.infoText}>No incomes</p>;
 
 	if (data.length <= 0) return noDataComponent;
 	return (
 		<div>
-			<h2>Entries list</h2>
+			<h2 style={styles.header}>Entries list</h2>
 			<div style={styles.container}>
-				<div style={styles.list}>
-					{expenseData.length <= 0 && noExpensesComponent}
-					{expenseData.map((el) => (
-						<Entry
-							key={el.id}
-							style={styles.expenseEntry}
-							name={el.name}
-							amount={el.amount}
-							category={el.category}
-							id={el.id}
-							removeEntry={removeEntryHandle}
-						/>
-					))}
-				</div>
-				<div style={styles.list}>
+				<div style={styles.listContainer}>
+					<p style={styles.incomeHeader}>Incomes</p>
 					{incomeData.length <= 0 && noIncomesComponent}
-					{incomeData.map((el) => (
-						<Entry
-							key={el.id}
-							style={styles.incomeEntry}
-							name={el.name}
-							amount={el.amount}
-							category={el.category}
-							id={el.id}
-							removeEntry={removeEntryHandle}
-						/>
-					))}
+					<div style={styles.list}>
+						{incomeData.map((el) => (
+							<Entry
+								key={el.id}
+								color={incomeColor}
+								name={el.name}
+								amount={el.amount}
+								category={el.category}
+								id={el.id}
+								removeEntry={removeEntryHandle}
+							/>
+						))}
+					</div>
+				</div>
+				<div style={styles.listContainer}>
+					<p style={styles.expenseHeader}>Expenses</p>
+					{expenseData.length <= 0 && noExpensesComponent}
+					<div style={styles.list}>
+						{expenseData.map((el) => (
+							<Entry
+								key={el.id}
+								color={expenseColor}
+								name={el.name}
+								amount={el.amount}
+								category={el.category}
+								id={el.id}
+								removeEntry={removeEntryHandle}
+							/>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

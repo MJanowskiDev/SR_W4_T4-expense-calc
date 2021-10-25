@@ -21,6 +21,7 @@ const ExpenseCalculator = () => {
 	const [ formVisible, setFormVisible ] = useState(false);
 	const newEntryHandle = (data) => {
 		setEntries([ ...entries, data ]);
+		setFormVisible(false);
 	};
 	const removeEntryHandle = (id) => {
 		setEntries(entries.filter((el) => el.id !== id));

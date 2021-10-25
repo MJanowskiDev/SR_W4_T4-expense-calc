@@ -32,8 +32,8 @@ export const styles = {
 		borderRadius: 6,
 		padding: 10,
 		fontWeight: 700,
-		border: '1px solid #3d8107',
-		color: '#3d8107',
+		border: '2px solid #0096c7',
+		color: '#0096c7',
 		background: 'white',
 		letterSpacing: 2,
 		width: '100%'
