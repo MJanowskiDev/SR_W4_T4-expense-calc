@@ -1,6 +1,6 @@
-const Entry = ({ color, name, amount, category, id, removeEntry }) => {
+const Entry = ({ color, removeEntry, data }) => {
 	const handleRemove = () => {
-		removeEntry && removeEntry(id);
+		removeEntry && removeEntry(data.id);
 	};
 
 	const styles = {
@@ -52,16 +52,16 @@ const Entry = ({ color, name, amount, category, id, removeEntry }) => {
 		<div style={styles.container}>
 			<div style={styles.categoryContainer}>
 				<span style={styles.labelText}>Category:</span>
-				<span style={styles.valueText}>{category}</span>
+				<span style={styles.valueText}>{data.category}</span>
 			</div>
 
 			<div>
 				<span style={styles.labelText}>Name:</span>
-				<span style={styles.valueText}>{name}</span>
+				<span style={styles.valueText}>{data.name}</span>
 			</div>
 			<div style={styles.amountContainer}>
 				<span style={styles.labelText}>Amount:</span>
-				<span style={styles.amount}>{Number(amount).toFixed(2)}</span>
+				<span style={styles.amount}>{Number(data.amount).toFixed(2)}</span>
 				<div style={styles.buttonContainer}>
 					<button style={styles.button} onClick={handleRemove}>
 						Remove

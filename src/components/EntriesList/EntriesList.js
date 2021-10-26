@@ -62,15 +62,7 @@ const EntriesList = ({ data, removeEntry }) => {
 					{incomeData.length <= 0 && noIncomesComponent}
 					<div style={styles.list}>
 						{incomeData.map((el) => (
-							<Entry
-								key={el.id}
-								color={incomeColor}
-								name={el.name}
-								amount={el.amount}
-								category={el.category}
-								id={el.id}
-								removeEntry={removeEntryHandle}
-							/>
+							<Entry key={el.id} color={incomeColor} removeEntry={removeEntryHandle} data={el} />
 						))}
 					</div>
 				</div>
@@ -80,15 +72,7 @@ const EntriesList = ({ data, removeEntry }) => {
 					{expenseData.length <= 0 && noExpensesComponent}
 					<div style={styles.list}>
 						{expenseData.map((el) => (
-							<Entry
-								key={el.id}
-								color={expenseColor}
-								name={el.name}
-								amount={el.amount}
-								category={el.category}
-								id={el.id}
-								removeEntry={removeEntryHandle}
-							/>
+							<Entry key={el.id} color={expenseColor} data={el} removeEntry={removeEntryHandle} />
 						))}
 					</div>
 				</div>
