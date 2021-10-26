@@ -55,7 +55,6 @@ const Expense = ({ data, removeEntry }) => {
 	if (data.length <= 0) return noDataComponent;
 	return (
 		<div>
-			<h2 style={styles.header}>Entries list</h2>
 			<div style={styles.container}>
 				<div style={styles.listContainer}>
 					<p style={styles.incomeHeader}>Incomes</p>

@@ -16,8 +16,6 @@ const Entry = ({ color, name, amount, category, id, removeEntry }) => {
 		container: {
 			padding: 10,
 			borderRadius: 6,
-			padding: 10,
-			borderRadius: 6,
 			display: 'flex',
 			flexDirection: 'column',
 			gap: 10,
@@ -36,7 +34,6 @@ const Entry = ({ color, name, amount, category, id, removeEntry }) => {
 		},
 		button: {
 			background: 'transparent',
-			border: 'none',
 			color: '#e6300b',
 			border: '1px solid #e6300b',
 			borderRadius: 6,
