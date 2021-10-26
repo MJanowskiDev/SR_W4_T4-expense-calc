@@ -41,12 +41,13 @@ const styles = {
 		fontWeight: 700
 	}
 };
-const Expense = ({ data, removeEntry }) => {
+const EntriesList = ({ data, removeEntry }) => {
+	const expenseData = data.filter((el) => el.type === 'expense');
+	const incomeData = data.filter((el) => el.type === 'income');
+
 	const removeEntryHandle = (id) => {
 		removeEntry && removeEntry(id);
 	};
-	const expenseData = data.filter((el) => el.type === 'expense');
-	const incomeData = data.filter((el) => el.type === 'income');
 
 	const noDataComponent = <p style={styles.infoText}>No entries to show</p>;
 	const noExpensesComponent = <p style={styles.infoText}>No expenses</p>;
@@ -73,6 +74,7 @@ const Expense = ({ data, removeEntry }) => {
 						))}
 					</div>
 				</div>
+
 				<div style={styles.listContainer}>
 					<p style={styles.expenseHeader}>Expenses</p>
 					{expenseData.length <= 0 && noExpensesComponent}
@@ -95,4 +97,4 @@ const Expense = ({ data, removeEntry }) => {
 	);
 };
 
-export default Expense;
+export default EntriesList;

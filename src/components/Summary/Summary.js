@@ -1,4 +1,5 @@
 const styles = { textAlign: 'right', paddingRight: 10 };
+
 const Summary = ({ income, expenses }) => {
 	const balance = income - expenses;
 	const color = balance > 0 ? '#47a025' : '#e6300b';

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import ExpenseForm from 'components/ExpenseForm';
-import Expense from 'components/Expense';
+import Form from 'components/Form';
+import EntriesList from 'components/EntriesList';
 import ShowHideButton from 'components/ShowHideButton';
 import Summary from 'components/Summary';
 import { useLocalStorage } from 'utils/useLocalStorage';
+
 const styles = {
 	container: {
 		padding: 10,
@@ -17,11 +18,15 @@ const styles = {
 		textAlign: 'center'
 	}
 };
+
+const categories = [ 'Other', 'Salary', 'Entertainment', 'Shopping', 'Food', 'Household', 'Car', 'Withdrawal' ];
+
 const ExpenseCalculator = () => {
 	const [ entries, setEntries ] = useLocalStorage('entries', []);
 	const [ formVisible, setFormVisible ] = useState(false);
 	const [ totalIncome, setTotalIncome ] = useState(0);
 	const [ totalExpenses, setTotalExpenses ] = useState(0);
+
 	const newEntryHandle = (data) => {
 		setEntries([ ...entries, data ]);
 		setFormVisible(false);
@@ -49,15 +54,16 @@ const ExpenseCalculator = () => {
 		},
 		[ entries ]
 	);
+
 	return (
 		<div style={styles.container}>
 			<h2 style={styles.header}>Expense calculator</h2>
 			<ShowHideButton visible={formVisible} handleChanged={handleVisibilityChange} />
 			{formVisible ? (
-				<ExpenseForm newEntryHandle={newEntryHandle} />
+				<Form newEntryHandle={newEntryHandle} categories={categories} />
 			) : (
 				<div>
-					<Expense removeEntry={removeEntryHandle} data={entries} />
+					<EntriesList removeEntry={removeEntryHandle} data={entries} />
 					<Summary income={totalIncome} expenses={totalExpenses} />
 				</div>
 			)}
